@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TODO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="script/todo.js"></script>
+
+</head>
+<body ng-app="todoApp">
+<div ng-controller="TodoListController as todoList">
+    <div class="edit-bg" ng-show="todoList.editModal.shown" ng-click="todoList.editModal.shown = false;">
+        <div class="edit-modal" ng-esc="todoList.editModal.shown = false" ng-click="$event.stopPropagation();">
+            <input type="text" ng-model="todoList.editModal.task" tabindex="5" class="task" id="editField">
+            <div class="buttons">
+                <br>
+                <button class="btn waves-effect waves-light" type="submit" style="float:left;" ng-click="todoList.edit(true);" tabindex="6"> SAVE </button>
+                <button class="btn waves-effect waves-light" type="submit" style="float:right;" ng-click="todoList.edit(false);" tabindex="7"> CANCEL </button>
+            </div>
+        </div>
+    </div>
+    <h2 class="center">TODO:</h2>
+    <div class="row">
+        <div class="col s6 offset-s3 input-field">
+            <form ng-submit="todoList.addTodo()">
+                <input placeholder="Add new task | search for task" id="title" type="text" ng-model="todoList.task" tabindex="1">
+            </form>
+            <ul as-sortable ng-model="todoList.todos" class="todo-items">
+                <li as-sortable-item  class="todo-item" ng-repeat="todo in todoList.todos | filter:todoList.task as filtered">
+                    <div class="handle" as-sortable-item-handle>
+                        <i class="material-icons"> reorder </i>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" ng-model="todo.completedTask" tabindex="2"><label for="completed" ng-click="todoList.toggle($index);"></label>
+                    </div>
+                    <div class="task"><p title="{{todo._id}}">{{todo.task}}</p></div>
+                    <div class="action-buttons">
+                        <button class="btn-floating btn-small waves-effect waves-light edit" ng-click="todoList.showEditModal($index);" tabindex="3">
+                            <i class="material-icons"> edit </i>
+                        </button>
+                        <button class="btn-floating btn-small waves-effect waves-light delete" ng-click="todoList.remove($index);" tabindex="4">
+                            <i class="material-icons"> delete </i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+<div>
+</body>
+</html>

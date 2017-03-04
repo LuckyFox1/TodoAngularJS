@@ -1,0 +1,64 @@
+.edit-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 10;
+}
+
+.edit-modal {
+    position: static;
+    margin: 30px auto;
+    top: 50%;
+    left: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    height: 250px;
+    box-sizing: border-box;
+    padding: 50px;
+    padding-top: 60px;
+    background-color: #FFFFFF;
+    z-index: 15;
+}
+
+.edit-modal .buttons {
+    text-align: center;
+    width: 100%;
+}
+
+ul.todo-items {
+    list-style-type: none;
+}
+
+ul.todo-items li {
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+
+ul.todo-items li:after {
+    clear: both;
+}
+
+li .handle {
+    line-height: 60px;
+}
+
+li .check {
+    width: 50px;
+    height: 80px;
+}
+
+li .task {
+    width: 600px;
+    height: 80px;
+    flex-grow: 1;
+}
+
+li .action-buttons {
+    display: flex;
+}
