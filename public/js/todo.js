@@ -63,15 +63,16 @@ angular.module('todoApp', ['as.sortable'])
             if(result) {
                 let index = todoList.editModal.index;
                 let todoID = todoList.todos[index]._id;
+                if (todoList.editModal.task) {
                 todoList.todos[index].task = todoList.editModal.task;
 
-                networking
-                    .modifyTodo(todoID, todoList.todos[index].task, todoList.todos[index].completedTask)
-                    .then((edited) => {
-                        todoList.todos[index] = edited;
-                    });
+                    networking
+                        .modifyTodo(todoID, todoList.todos[index].task, todoList.todos[index].completedTask)
+                        .then((edited) => {
+                            todoList.todos[index] = edited;
+                        });
+                }
             }
-
             todoList.editModal.shown = false;
         };
     }])
