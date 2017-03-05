@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="script/todo.js"></script>
-
 </head>
 <body ng-app="todoApp">
 <div ng-controller="TodoListController as todoList">
     <div class="edit-bg" ng-show="todoList.editModal.shown" ng-click="todoList.editModal.shown = false;">
         <div class="edit-modal" ng-esc="todoList.editModal.shown = false" ng-click="$event.stopPropagation();">
-            <input type="text" ng-model="todoList.editModal.task" tabindex="5" class="task" id="editField">
+            <input type="text" ng-model="todoList.editModal.task" maxlength="35" tabindex="5" class="task" id="editField">
             <div class="buttons">
                 <br>
                 <button class="btn waves-effect waves-light" type="submit" style="float:left;" ng-click="todoList.edit(true);" tabindex="6"> SAVE </button>
@@ -23,7 +22,7 @@
     <div class="row">
         <div class="col s6 offset-s3 input-field">
             <form ng-submit="todoList.addTodo()">
-                <input placeholder="Add new task | search for task" id="title" type="text" ng-model="todoList.task" tabindex="1">
+                <input placeholder="Add new task | search for task" maxlength="35" id="title" type="text" ng-model="todoList.task" tabindex="1">
             </form>
             <ul as-sortable ng-model="todoList.todos" class="todo-items">
                 <li as-sortable-item  class="todo-item" ng-repeat="todo in todoList.todos | filter:todoList.task as filtered">

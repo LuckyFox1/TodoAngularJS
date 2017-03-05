@@ -19,12 +19,14 @@ angular.module('todoApp', ['as.sortable'])
             });
 
         todoList.addTodo = () => {
-            networking
-                .addTodo(todoList.task)
-                .then((newlyCreated) => {
-                    todoList.todos.push(newlyCreated);
-                    todoList.task = '';
-                });
+            if (todoList.task) {
+                networking
+                    .addTodo(todoList.task)
+                    .then((newlyCreated) => {
+                        todoList.todos.push(newlyCreated);
+                        todoList.task = '';
+                    });
+            }
         };
 
         todoList.toggle = (index) => {
